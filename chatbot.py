@@ -129,6 +129,11 @@ st.markdown("""
 # Backend / RAG Logic
 # -----------------------------------------------------------------------------
 
+# Helper to format time
+def get_time_str():
+    import datetime
+    return datetime.datetime.now().strftime("%H:%M:%S")
+
 @st.cache_resource
 def get_collection():
     """Load ChromaDB collection once."""
@@ -199,7 +204,9 @@ def generate_response_stream(query, context_text):
     system_prompt = (
         "You are a helpful and strict assistant for a Help Center. "
         f"TODAY'S DATE: {current_date}\n"
-        "You must answer the user's question based ONLY on the provided context below. "
+        "INSTRUCTIONS:\n"
+        "1. **Greetings & Pleasantries**: If the user says 'Hello', 'Good morning', 'Thanks', or 'Thank you', respond politely and naturally. You do NOT need context for this.\n"
+        "2. **Information Queries**: For questions about NEST, pensions, or account details, you must answer based **ONLY** on the provided context below. "
         "If the context contains instructions, options, or steps (e.g., 'Website', 'Phone', 'Post'), you MUST summarize them clearly for the user. "
         "ADVANCED REASONING: If the CALCULATED DATE RESULT (below) is available, use it to answer specific date questions perfectly. "
         "Do NOT try to do the math yourself if the result is provided. Trust the 'DATE CALCULATION RESULT'. "
@@ -269,7 +276,11 @@ if "chat_ended" not in st.session_state:
     st.session_state.chat_ended = False
 
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [{
+        "role": "assistant",
+        "content": "Hello! Welcome to the Member Help Center. To get started, please tell me your name.",
+        "timestamp": get_time_str()
+    }]
 
 if "conversation_step" not in st.session_state:
     st.session_state.conversation_step = "ASK_NAME" # Steps: ASK_NAME, READY
@@ -292,9 +303,9 @@ with col_end:
 
 
 
-# Helper to format time
-def get_time_str():
-    return datetime.datetime.now().strftime("%H:%M:%S")
+# Helper to format time (Moved to top)
+# def get_time_str():
+#     return datetime.datetime.now().strftime("%H:%M:%S")
 
 # Sidebar - Settings (Minimal)
 with st.sidebar:
@@ -350,7 +361,11 @@ if st.session_state.chat_ended:
         
     with col_new:
         if st.button("🔄 Start New Chat (Skip)", type="primary", use_container_width=True):
-            st.session_state.messages = []
+            st.session_state.messages = [{
+                "role": "assistant",
+                "content": "Hello! Welcome to the Member Help Center. To get started, please tell me your name.",
+                "timestamp": get_time_str()
+            }]
             st.session_state.session_id = str(uuid.uuid4())
             st.session_state.chat_ended = False
             if "user_name" in st.session_state:
