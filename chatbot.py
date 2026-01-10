@@ -5,6 +5,7 @@ from groq import Groq
 import uuid
 import json
 from feedback_manager import log_chat, update_feedback_log
+from google_sheets_logger import log_to_sheet, update_sheet_feedback
 
 # Configuration
 DB_PATH = "data/chroma_db"
@@ -207,6 +208,7 @@ def generate_response_stream(query, context_text):
         "INSTRUCTIONS:\n"
         "1. **Greetings & Pleasantries**: If the user says 'Hello', 'Good morning', 'Thanks', or 'Thank you', respond politely and naturally. You do NOT need context for this.\n"
         "2. **Information Queries**: For questions about NEST, pensions, or account details, you must answer based **ONLY** on the provided context below. "
+        "3. **Privacy & Security**: You are a public help bot. You do **NOT** have access to member accounts. **NEVER** ask for personal details like NEST ID, NNI, or Date of Birth. If a user asks about their specific account (e.g., 'What is my balance?'), explain that you cannot access their account and guide them to log in to the website.\n"
         "If the context contains instructions, options, or steps (e.g., 'Website', 'Phone', 'Post'), you MUST summarize them clearly for the user. "
         "ADVANCED REASONING: If the CALCULATED DATE RESULT (below) is available, use it to answer specific date questions perfectly. "
         "Do NOT try to do the math yourself if the result is provided. Trust the 'DATE CALCULATION RESULT'. "
@@ -214,7 +216,7 @@ def generate_response_stream(query, context_text):
         "Do NOT fabricate information. "
         "Do NOT mention external resources or say '(link provided)' unless the link path is explicitly present in the CONTEXT. "
         "Always format links as Markdown: `[Link Text](url)`. "
-        "Be conversational and ask clarifying follow-up questions when needed (e.g., 'Do you have your NEST ID?'). "
+        "Be conversational but do NOT ask identifying questions. "
         "If the answer is not in the context, say 'I cannot find that information in the help articles provided.'\n\n"
         "CONTEXT:\n" + context_text + date_context + conversation_context
     )
@@ -299,6 +301,12 @@ with col_end:
                 user_name=st.session_state.get('user_name', 'Anonymous'),
                 conversation_history=st.session_state.messages
             )
+            # Log to Google Sheets
+            log_to_sheet(
+                session_id=st.session_state.session_id,
+                user_name=st.session_state.get('user_name', 'Anonymous'),
+                transcript=str(st.session_state.messages)
+            )
             st.rerun()
 
 
@@ -334,10 +342,14 @@ if st.session_state.chat_ended:
             rating = st.slider("Rate experience:", 1, 10, 5)
             text = st.text_area("Comments (optional):")
             if st.form_submit_button("Submit Feedback"):
+                # Update CSV
                 if update_feedback_log(st.session_state.session_id, rating, text):
                     st.success("Feedback submitted!")
                 else:
                     st.error("Error saving feedback.")
+                
+                # Update Google Sheet
+                update_sheet_feedback(st.session_state.session_id, rating, text)
     
     col_dl, col_new = st.columns(2)
     
