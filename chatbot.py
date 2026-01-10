@@ -29,100 +29,106 @@ st.set_page_config(page_title="Member Help Center Bot", page_icon="🤖", layout
 st.markdown("""
 <style>
     /* =========================================
-       ACCESSIBILITY & THEME OVERRIDES 
+       MODERN THEME & ACCESSIBILITY 
        ========================================= */
-    
-    /* 1. Main App Background & Text */
+
+    /* 1. Global Reset & Main Area */
     .stApp {
+        background-color: #f8f9fa !important; /* Very light subtle gray */
+        color: #000000 !important;
+    }
+    
+    /* 2. Chat Input - Floating Pill Style */
+    div[data-testid="stChatInput"] {
+        border-top: none !important;
+        background-color: transparent !important;
+        padding-bottom: 20px !important;
+    }
+    
+    div[data-testid="stChatInput"] > div {
+        border-radius: 24px !important;
+        border: 1px solid #e0e0e0 !important;
         background-color: #ffffff !important;
-        color: #000000 !important;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.08) !important; /* Soft float shadow */
     }
     
-    /* FORCE Black text on everything inside the main area */
-    .stApp > header, .stApp > div, .stApp > footer {
+    div[data-testid="stChatInput"] textarea {
+        background-color: transparent !important;
         color: #000000 !important;
-    }
-    .stApp p, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6, .stApp span, .stApp div {
-        color: #000000 !important;
-    }
-    
-    /* 2. Sidebar styling - Aggressive Overrides */
-    [data-testid="stSidebar"], section[data-testid="stSidebar"], [data-testid="stSidebarNav"] {
-        background-color: #f0f2f6 !important;
-        border-right: 1px solid #dce0e6;
-    }
-    /* Force all text in sidebar to be dark */
-    [data-testid="stSidebar"] *, [data-testid="stSidebar"] p, [data-testid="stSidebar"] span, [data-testid="stSidebar"] div, [data-testid="stSidebar"] label {
-        color: #262730 !important; 
+        caret-color: #000000 !important;
     }
 
-    /* 3. Button Styling (Reset Button, etc.) - High Contrast */
+    /* 3. "Predicted Topic" Buttons - Modern Cards */
     div[data-testid="stButton"] > button {
         background-color: #ffffff !important;
-        color: #262730 !important;
-        border: 1px solid #dce0e6 !important;
+        color: #2c3e50 !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 12px !important;
         font-weight: 500 !important;
+        padding: 0.5rem 1rem !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+        transition: all 0.2s ease !important;
     }
     div[data-testid="stButton"] > button:hover {
         border-color: #ff4b4b !important;
         color: #ff4b4b !important;
-        background-color: #f0f2f6 !important;
-    }
-    div[data-testid="stButton"] > button:active {
-        box-shadow: none;
-        background-color: #e6e9ef !important;
-    }
-
-    /* 4. Chat Input & Text Input Styling */
-    textarea, input {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        caret-color: #000000 !important;
-        border: 1px solid #dce0e6 !important;
-    }
-    div[data-testid="stChatInput"] {
-        background-color: #ffffff !important;
-        border-top: 1px solid #dce0e6 !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
     }
     
-    /* 5. Chat Messages */
+    /* 4. Chat Messages - Clean Bubbles */
     .stChatMessage {
-        background-color: #f9f9f9 !important;
-        color: #000000 !important;
-        border: 1px solid #e0e0e0 !important;
-        border-radius: 8px !important;
-        padding: 15px !important;
-        margin-bottom: 10px !important;
+        background-color: #ffffff !important;
+        border: 1px solid #f0f0f0 !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+        border-radius: 12px !important;
     }
     
-    /* 6. Radio button text override (Specific fix) */
-    .stRadio {
-        background-color: transparent !important;
+    /* 5. Sidebar - Clean Contrast */
+    [data-testid="stSidebar"] {
+        background-color: #ffffff !important;
+        border-right: 1px solid #f0f0f0;
     }
-    .stRadio label, .stRadio div, .stRadio p {
-        color: #000000 !important;
+    
+    /* 6. Typography Overrides */
+    h1, h2, h3 {
+        color: #2c3e50 !important;
+        font-family: 'Inter', sans-serif !important;
     }
-
+    
     /* 7. Blinking Cursor Animation */
-    @keyframes blink {
-        50% { opacity: 0; }
-    }
+    @keyframes blink { 50% { opacity: 0; } }
     .thinking-text {
-        color: #000000 !important;
-        font-weight: 500;
+        color: #666 !important;
         font-style: italic;
-        display: flex;
-        align-items: center;
+        font-size: 0.9rem;
     }
     .cursor {
         display: inline-block;
-        width: 8px;
-        height: 18px;
-        background-color: #000000;
+        width: 6px;
+        height: 14px;
+        background-color: #666;
         animation: blink 1s step-end infinite;
-        margin-left: 5px;
+        margin-left: 4px;
     }
-
+    
+    /* 8. HIDE STREAMLIT BRANDING & TOOLBAR */
+    [data-testid="stToolbar"] {
+        visibility: hidden;
+        height: 0%;
+    }
+    [data-testid="stDecoration"] {
+        visibility: hidden;
+    }
+    [data-testid="stStatusWidget"] {
+        visibility: hidden;
+    }
+    #MainMenu {
+        visibility: hidden;
+    }
+    header {
+        visibility: hidden;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -152,8 +158,6 @@ def query_rag(collection, query, category, n_results=3):
         n_results=n_results,
         where={"category": category} # Strict filtering
     )
-    return results
-
     return results
 
 # Create a helper to safely get content from chunk/response
@@ -552,4 +556,3 @@ if "last_prediction" in st.session_state and st.session_state.messages and st.se
             del st.session_state.last_prediction
             # 3. Rerun to update chat
             st.rerun()
-
