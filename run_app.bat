@@ -1,0 +1,6 @@
+@echo off
+echo Installing dependencies (if missing)...
+pip install -r requirements.txt
+echo Starting Help Center Chatbot...
+streamlit run chatbot.py
+pause

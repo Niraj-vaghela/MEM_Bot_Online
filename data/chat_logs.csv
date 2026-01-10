@@ -1,0 +1,56 @@
+Sr. no,Date,Unique ID,Member Name,Transcript,Feedback Rating,Feedback Text
+1,2026-01-09 16:06:16,c31ae4a3-b4db-4e6d-8826-e24b266469cf,How do I update my details?,"User: How do I update my details?
+Assistant: How can I help you, How do I update my details??",9,Flow verified
+2,2026-01-09 16:29:23,4ae6d505-7d2f-4e80-8898-349450a61a20,Anonymous,,5,
+3,2026-01-09 16:30:16,5ec9711c-83a1-4dee-b356-6a5e8482c60e,How do I update details?,"User: How do I update details?
+Assistant: How can I help you, How do I update details??",,
+4,2026-01-09 16:32:51,bff36867-7ff9-4e2e-8b04-c63a1eef3442,Anonymous,,,
+5,2026-01-09 16:33:20,edc2ec98-05a2-4f1b-abc8-d47ff04172c2,Anonymous,,10,Great work
+6,2026-01-09 16:39:29,b6dba592-da61-4f90-9ae8-52cebdcea296,Niraj,"User: Niraj
+Assistant: How can I help you, Niraj?
+User: I wish to opt out
+Assistant: To opt out of NEST, you have a few options:
+
+1. **Online**: You can log in to your online account and click on ""Opt-out"". You'll see your employer's name and the opt-out period on your dashboard. Select 'Learn more about opting out' and follow the on-screen instructions.
+2. **Phone**: You can call our automated telephone service at 0300 020 0090 and follow the automated instructions to opt out. This call is likely to take around six minutes, and you'll have the option to receive your opt-out confirmation by email (24-48 hours) or by post (up to five working days).
+3. **Post**: You can request a paper form from Nest by calling 0300 020 0090. Please note that if you're coming towards the end of your opt-out period, we won't be able to send you an opt-out form as it won't reach you in time.
+
+Before you start, I just need to confirm: do you have your NEST ID or any other details about your employer?",10,
+7,2026-01-09 16:48:04,4b854d50-324c-47a7-9fe7-a94eb4234e94,Anonymous,,5,
+8,2026-01-09 16:48:48,ecf36e17-018c-45a5-a09c-ab9d5a5ed7f2,NIraj,"User: NIraj
+Assistant: How can I help you, NIraj?",5,
+9,2026-01-09 21:09:49,02c85a46-6333-414a-a9a6-458db6a9579d,Tester,"User: Tester
+Assistant: How can I help you, Tester?",,
+10,2026-01-09 21:43:51,8aa1673f-d554-466c-bdaa-92203e9a529c,niraj,"User: niraj
+Assistant: How can I help you, niraj?
+User: Give me all retirement options
+Assistant: Based on our previous conversation, you have the following retirement options available:
+
+1. **Take some or all of your pot as cash**: You can withdraw some or all of your retirement pot as cash. However, you'll need to consider the minimum pot value of £3,000 and the minimum amount of £200 per payment.
+2. **Use the Nest Guided Retirement Fund**: This fund is designed to help you manage your retirement savings and provide a steady income.
+3. **Choose options from other providers**: You can choose to buy an annuity or transfer your pension to another provider.
+4. **Continue saving with Nest and make additional contributions**: You can continue to save with Nest and make additional contributions to your retirement pot.
+
+Before making a decision, it's essential to consider your individual circumstances and seek guidance from a financial advisor or Pension Wise, a government service that offers free and impartial pension guidance.
+
+If you're close to retirement, you may also be eligible for the **Nest Guided Retirement Fund**, which can help you manage your retirement savings and provide a steady income.
+
+To explore these options further, you can log in to your online account, select 'Explore your options' from the dashboard or 'Take your money out' from the menu, and follow the on-screen instructions. Alternatively, you can call us on 0300 020 0090 to get started.
+User: Transfers
+Assistant: You're interested in transferring money out of Nest. To transfer your money out of Nest, you can follow these steps:
+
+1. Check if your other provider uses the Origo Transfer Service. If they do, it's the quickest and easiest way to get your transfer started.
+2. If your other provider doesn't use Origo Transfer Service, you'll need to request a Nest transfer pack.
+3. If you're transferring to a non-UK based scheme, you'll need to request an overseas transfer pack by calling us on 0300 020 0090.
+4. Make sure your personal details are kept up to date, including your mobile number, so we can text you with an update on your transfer request.
+5. To request a transfer pack, log in to your online account and select 'Take your money out' on your dashboard. Then select 'Transfer your pot' and follow the instructions.
+6. Once you receive the transfer pack, read the instructions carefully and enter the details. Send the completed form to the address mentioned in the form for us to start processing your request.
+7. We may ask you to send us some proof of identification, if required, by post or through your Nest mailbox.
+
+You can also send documents via your Nest mailbox to avoid postal delays. To do this, log in to your Nest account, select 'Messages', then 'Mailbox', and select 'Message us'. Enter the subject, message type, and the text of your message, and select 'Add an attachment' to upload your document.
+
+Do you have any specific questions about transferring your money out of Nest?
+User: Tell me more about proof of identity, delay times
+Assistant: To update your details, we may require evidence to make changes on your account. This is known as proof of identity. You can upload the mentioned documents online or send it through your Nest mailbox, which is faster compared to post. Once we've received the evidence, we'll update your details within five working days. We'll return the original evidence the same manner you send it to us.
+
+If you're sending the evidence through post, please note that it may take longer to process your request.",5,
